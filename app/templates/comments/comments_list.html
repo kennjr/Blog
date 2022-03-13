@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+      <title>{{title}}</title>
+    {% else %}
+      <title>Comments</title>
+    {% endif %}
+</head>
+<body>
+    {% block stylesheet %}
+      <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/comments_styles.css') }}"/>
+    {% endblock stylesheet %}
+    {% import 'macros.html' as macro %}
+
+    <div class="navbar_container">
+        <div class="comment_nav_left_opts">
+            <img class="regular_img" src="/static/images/ic_back_arrow.svg" alt="Navigate to home" onclick="window.location.href='{{ url_for( 'main.index' ) }}';">
+            <p id="comments_txt">Comments</p>
+        </div>
+
+    </div>
+
+    <div class="block_container">
+
+        {% if comments_list is defined and comments_list|length > 0 %}
+            <div class="list">
+                {{ macro.show_pitches_comments(comments_list) }}
+            </div>
+        {% else %}
+            <p class="informative_text">No comments for this pitch yet.<br>Give the creator some feedback by adding a comment</p>
+        {% endif %}
+
+    </div>
+    <div class="comment_sect_container">
+        <form class="comment_form">
+            <input type="text" placeholder="Comment" name="comment" class="comment_input" required>
+            <input type="submit" value="Add comment" class="submit_btn">
+        </form>
+    </div>
+</body>
+</html>
