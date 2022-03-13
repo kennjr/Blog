@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body>
+
+    {% block styles %}
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/error_styles.css')}}">
+    {% endblock %}
+    <div class="error_msg_container">
+        <img class="error_img" src="/static/images/ic_error.svg" alt="An error occurred while processing your request">
+        <div class="error_info_container">
+            <h3>404</h3>
+            <p>A 404 error occurred. Unfortunately the resource you requested for couldn't be found.</p>
+            <p class="nav_back_txt btn" onclick="window.location.href='{{ url_for( 'main.index' ) }}';">Navigate back</p>
+        </div>
+    </div>
+
+</body>
+</html>

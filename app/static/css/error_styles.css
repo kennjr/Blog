@@ -1,0 +1,50 @@
+:root{
+    --primary-color: #dcdcdc;
+    --accent-color: #2A52BE;
+    --basic-font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.error_msg_container{
+    width: 70%;
+    margin-left: 10%;
+    margin-top: 7.5%;
+    display: flex;
+    flex-direction: row;
+}
+
+.error_info_container{
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.error_info_container > p, h3{
+    margin: 1vh 3vw;
+}
+
+.btn{
+    background-color: var(--accent-color);
+    border-radius: 4px;
+    padding: 1vh 1.5vw;
+    color: white;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn:active{
+    cursor: pointer;
+    background:rgba(26, 117, 255, 0.5);
+}
+
+.error_img{
+    width: 12%;
+    height: 12%;
+    align-self: center;
+}
+
+.nav_back_txt{
+    align-self: flex-end;
+}

@@ -1,0 +1,168 @@
+:root{
+    --primary-color: #dcdcdc;
+    --accent-color: #2A52BE;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --basic-font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container {
+    width: 30%;
+    margin: 7% auto;
+    overflow: auto;
+    min-height: 50vh;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.form_container{
+    display: block;
+}
+
+.close_form_img{
+    padding: 10px 20px;
+    margin: 0 0 auto 0;
+    overflow: hidden;
+    align: right;
+}
+
+.close_form_img:hover{
+    cursor: pointer;
+}
+
+.close_form_img:active{
+    cursor: pointer;
+    border-radius: 5px;
+    background:rgba(191, 191, 191, 0.5);
+}
+
+.form_footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    align-items: center;
+}
+
+.form_body{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    font-size: 16px;
+}
+
+.the_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.form_header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: var(--basic-font);
+    background-color: var(--accent-color);
+    font-size: 22px;
+    overflow: auto;
+    color: #fff;
+    padding: 30px;
+    font-weight: bold;
+}
+
+.img_btn{
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent-color);
+    border-radius: 50px;
+    padding: 5px 10px; /* vh */
+}
+
+.submit_btn{
+    border-style: none;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: #fff;
+    font-size: 16px;
+    padding: 1.5vh 3vw;
+    align-self: center;
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+}
+
+#pitch_category {
+    width: 90%;
+    height: 30px;
+    border: 1px solid #999;
+    background-color: #fff;
+    font-size: 16px;
+    color: #000;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+#pitch_category_label{
+    margin-left: 0.5vw;
+    margin-top: 5px;
+    margin-bottom: 1vh;
+    font-family: var(--basic-font);
+    font-size: 15px;
+}
+
+#pitch_category:focus{
+    outline: none;
+}
+
+#pitch_category_opts_container{
+    margin: 10px 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form_text_area_input textarea {
+    width: 85%;
+    height: 30px;
+    margin: 10px 5px;
+    padding: 0px 10px;/* vh */
+    font-size: 16px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 1px;
+    border-width: 0.05px;
+    resize: vertical;
+}
+
+.form_text_area_input textarea:focus{
+    outline: none;
+    resize: vertical;
+}
+
+input:focus{
+    outline: none;
+    resize: vertical;
+}
+
+.input_container{
+    width: 80%;
+    align-self: center;
+}
+
+.input_container > input{
+    width: 100%;
+    padding: 1vh 1vw;
+    margin: 0.75vh 0;
+    border-width: 1px;
+    border-radius: 4px;
+    font-size: 15px;
+}
