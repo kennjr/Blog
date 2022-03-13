@@ -9,7 +9,20 @@
                 <img src="/static/images/ic_logo.svg" alt="Navigate to home">
                 <p class="home_txt">Blogg</p>
             </div>
-
+            <div class="nav_opts_container">
+                <div class="new_blog_container curved_btn" onclick="window.location.href='{{ url_for( 'main.index' ) }}';">
+                    <img src="/static/images/ic_add.svg" alt="Create a blog">
+    <!--                <p class="plus_txt">+</p>-->
+                    <p>New Pitch</p>
+                </div>
+                <div class="login_btn">
+                    {% if username %}
+                        <p>{{username}}</p>
+                    {% else %}
+                        <p>LOGIN</p>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 
