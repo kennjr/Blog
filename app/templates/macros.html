@@ -1,0 +1,23 @@
+{% macro display_blogs(blogs_list) %}
+
+    {% for blog in blogs_list %}
+        <div class="blog_item_container">
+            <p>{{blog.title}}</p>
+            <p>{{blog.description}}</p>
+            <div class="blog_item_info">
+                <p>Published : {{blog.timestamp}}</p>
+                <div class="blog_item_opts">
+                    <div class="blog_item_opt_container">
+                        <img src="/static/images/ic_save.svg" alt="Add this blog to bookmarks">
+                        <p>{{blog.saves}}</p>
+                    </div>
+                    <div class="blog_item_opt_container">
+                        <img src="/static/images/ic_comments.svg" alt="View the blog's comments">
+                        <p>{{blog.comments}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endmacro %}
