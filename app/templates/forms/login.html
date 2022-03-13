@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+        {% block stylesheet %}
+            <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/forms_styles.css') }}"/>
+        {% endblock stylesheet %}
+        <div class="form_container">
+            <img class="close_form_img" src="/static/images/ic_close.svg" onclick="window.location.href='{{ url_for( 'main.index' ) }}';">
+            <div class="container">
+                <div class="form_header">
+                    <p>Login</p>
+                </div>
+                <div class="form_body">
+                    <form class="the_form">
+                        <div class="input_container">
+                            <input type="email" placeholder="Email Address" name="email_address" required>
+                        </div>
+                        <div class="input_container">
+                            <input type="password" placeholder="Password" name="password" required>
+                        </div>
+
+                        <input type="submit" value="Login" class="submit_btn">
+                    </form>
+                </div>
+                <div class="form_footer">
+                    <p>Don't have an account? <a href="{{ url_for('auth.signup') }}">SignUp</a></p>
+                </div>
+            </div>
+
+        </div>
+
+</body>
+</html>

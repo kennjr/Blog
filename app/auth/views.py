@@ -1,8 +1,6 @@
 from flask import render_template, url_for
 from flask_login import login_required, logout_user, login_user
 from werkzeug.utils import redirect
-
-
 from app.auth import auth
 from flask import request as req
 

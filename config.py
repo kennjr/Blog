@@ -6,7 +6,7 @@ class Config:
     # SQLAlchemy = "postgresql+psycopg2://kenny:NewP@55w0rd123!@#@localhost/school"
     SECRET_KEY = "GY78JNnU1809m"
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:NewPA55w0rd123)(*@localhost/pitchesdb'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:NewPA55w0rd123)(*@localhost/blogsdb'
 
 class ProdConfig(Config):
     """

@@ -17,6 +17,9 @@
                     </div>
                 </div>
             </div>
+            {%- if not loop.last %}
+                <div class="divider"></div>
+            {% endif %}
         </div>
     {% endfor %}
 

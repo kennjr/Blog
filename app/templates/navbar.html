@@ -10,18 +10,20 @@
                 <p class="home_txt">Blogg</p>
             </div>
             <div class="nav_opts_container">
-                <div class="new_blog_container curved_btn" onclick="window.location.href='{{ url_for( 'main.index' ) }}';">
+                <div class="new_blog_container curved_btn" onclick="window.location.href='{{ url_for( 'main.new_blog' ) }}';">
                     <img src="/static/images/ic_add.svg" alt="Create a blog">
     <!--                <p class="plus_txt">+</p>-->
                     <p>New Pitch</p>
                 </div>
-                <div class="login_btn">
-                    {% if username %}
+                {% if username %}
+                    <div class="login_btn" onclick="window.location.href='{{ url_for( 'main.index' ) }}';">
                         <p>{{username}}</p>
-                    {% else %}
+                    </div>
+                {% else %}
+                    <div class="login_btn" onclick="window.location.href='{{ url_for( 'auth.login' ) }}';">
                         <p>LOGIN</p>
-                    {% endif %}
-                </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
