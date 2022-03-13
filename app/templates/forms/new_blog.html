@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create blog</title>
+</head>
+<body>
+
+    {% block stylesheet %}
+      <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/new_blog_styles.css') }}"/>
+    {% endblock stylesheet %}
+
+    <div>
+        <img class="regular_img" src="/static/images/ic_close.svg" alt="Navigate to home" onclick="window.location.href='{{ url_for( 'main.index' ) }}';">
+        <div class="new_blog_container">
+            <form class="blog_form">
+                <input type="text" placeholder="Title" name="title" class="comment_input" required>
+                <textarea placeholder="Description" name="description" cols="1" rows="10" required></textarea>
+                <textarea placeholder="Blog" name="blog_txt" cols="3" rows="10" required></textarea>
+                <input type="submit" value="Create" class="submit_btn">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
