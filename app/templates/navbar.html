@@ -1,0 +1,17 @@
+<div>
+    {% block styles %}
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/navbar_styles.css')}}">
+    {% endblock %}
+
+    <div class="main_nav_container">
+        <div class="nav_container">
+            <div class="home_nav" onclick="window.location.href='{{ url_for( 'main.index' ) }}';">
+                <img src="/static/images/ic_logo.svg" alt="Navigate to home">
+                <p class="home_txt">Blogg</p>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
