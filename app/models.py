@@ -19,6 +19,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), unique=True, index=True)
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
+    timestamp = db.Column(db.String(255))
+    last_login = db.Column(db.String(255))
     # photos = db.relationship('Photo', backref='photo', lazy="dynamic")
 
     # We use the @property decorator to create a write only class property password.
