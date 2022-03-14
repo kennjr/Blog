@@ -24,7 +24,7 @@ def index():
     return render_template('index.html', username=username, user_id=user_id, blogs_list=formatted_blogs)
 
 
-@main.route('/blogs/create', methods=["POST"])
+@main.route('/blogs/create')
 @login_required
 def new_blog():
     title = req.args.get("title")
