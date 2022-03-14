@@ -15,6 +15,7 @@ class ProdConfig(Config):
         Config: The parent configuration class with General configuration settings
     """
     DEBUG = False
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://afkoryyclozwlw:4b2fbe987462b592f96118c52ae8cd2f622c82d56d74c18c5106ac0c0efe446e@ec2-3-222-204-187.compute-1.amazonaws.com:5432/d88sj205t9jgec'
 
 
 class DevConfig(Config):
