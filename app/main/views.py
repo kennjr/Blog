@@ -3,10 +3,10 @@ from flask import request as req
 from werkzeug.utils import redirect
 from flask_login import current_user
 from app.main import main
-from app.utils import format_default_timestamp_single
+from app.utils import format_blogs_array
 
 
-@main.route('/')
+@main.route('/', methods=["GET"])
 def index():
     """Render the index template"""
     username = None
@@ -20,11 +20,11 @@ def index():
 
     from app.models import Blog
     blogs = Blog.query.all()
+    formatted_blogs = format_blogs_array(blogs)
+    return render_template('index.html', username=username, user_id=user_id, blogs_list=formatted_blogs)
 
-    return render_template('index.html', username=username, user_id=user_id, blogs_list=blogs)
 
-
-@main.route('/blogs/create')
+@main.route('/blogs/create', methods=["POST"])
 def new_blog():
     title = req.args.get("title")
     description = req.args.get("description")
@@ -44,18 +44,23 @@ def new_blog():
     return render_template('forms/new_blog.html')
 
 
-@main.route("/blogs/<int:blog_id>")
+@main.route("/blogs/<int:blog_id>", methods=["GET"])
 def view_blog(blog_id):
+    from app.models import Blog
+    blog = Blog.query.filter_by(id=blog_id).first()
+    if current_user.id == blog.creator_id:
+        show_more_opts = True
+    else:
+        show_more_opts = False
+    return render_template('blog_view.html', blog=blog, show_more_opts=show_more_opts)
 
-    return render_template('blog_view.html', blog_id=blog_id)
 
-
-@main.route("/blogs/<int:blog_id>/comments")
+@main.route("/blogs/<int:blog_id>/comments", methods=["GET", "POST"])
 def view_blog_comments(blog_id):
     return render_template('comments/comments_list.html', blog_id=blog_id)
 
 
-@main.route('/users/<int:user_id>')
+@main.route('/users/<int:user_id>', methods=["GET"])
 def view_profile(user_id):
     from app.models import User
     user = User.query.filter_by(id=user_id).first()
