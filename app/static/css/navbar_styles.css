@@ -132,6 +132,10 @@
     flex-direction: column;
 }
 
+.blog_item_container:active{
+    background:rgba(191, 191, 191, 0.4);
+}
+
 .blog_item_title_txt{
     margin-bottom: 1vh;
     font-size: 17px;

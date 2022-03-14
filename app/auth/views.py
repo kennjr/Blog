@@ -1,4 +1,4 @@
-from flask import render_template, url_for
+from flask import render_template, url_for, session
 from flask_login import login_required, logout_user, login_user
 from werkzeug.utils import redirect
 from app.auth import auth
@@ -30,6 +30,8 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user is not None and user.verify_password(password):
             login_user(user, True)
+
+            session["username"] = user.username
             return redirect(req.args.get('next') or url_for('main.index'))
         else:
             print("The login failed")

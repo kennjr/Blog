@@ -23,7 +23,7 @@
 }
 
 .comment_input{
-    width: 60vw;
+    width: 95%;
     align-self: flex-start;
     border-top: none;
     border-left: none;
@@ -61,4 +61,32 @@
     align-self: center;
     margin-top: 5vh;
     margin-bottom: 2vh;
+}
+
+.description_ta{
+    max-height: 5vh;
+    padding: 5px;
+    margin: 1vh 0;
+    max-width: 100%;
+}
+
+.description_ta:focus{
+    outline: none;
+}
+
+.blog_ta{
+    min-height: 10vh;
+    padding: 5px;
+    margin: 1vh 0;
+    max-width: 100%;
+}
+
+.blog_ta:focus{
+    outline: none;
+}
+
+.informative_txt{
+    text-align: center;
+    font-size: large;
+    font-family: var(--basic-font);
 }
