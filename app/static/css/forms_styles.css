@@ -166,3 +166,57 @@ input:focus{
     border-radius: 4px;
     font-size: 15px;
 }
+
+/* Styling for the phone */
+@media only screen and (max-width: 640px) {
+    /* Here are some changes*/
+    .container {
+        width: 70%;
+        margin: 15% auto;
+        overflow: auto;
+        min-height: 50vh;
+        border: 1px solid #ddd;
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+        border-radius: 5px;
+    }
+    .infoText{
+        font-size: 13px;
+    }
+}
+
+/* Styling for the phone */
+@media only screen and (min-width: 641px) and (max-width: 880px) {
+    /* Here are some changes*/
+    .container {
+        width: 50%;
+        margin: 10% auto;
+        overflow: auto;
+        min-height: 50vh;
+        border: 1px solid #ddd;
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+        border-radius: 5px;
+    }
+    .infoText{
+        font-size: 15px;
+    }
+}
+
+/* Styling for the phone */
+@media only screen
+    and (min-width: 881px)
+    and (max-width: 1200px) {
+    /* Here are some changes*/
+    .container {
+        width: 40%;
+        margin: 7% auto;
+        overflow: auto;
+        min-height: 50vh;
+        border: 1px solid #ddd;
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+        border-radius: 5px;
+    }
+
+    .infoText{
+        font-size: 16px;
+    }
+}

@@ -3,6 +3,7 @@ from flask import request as req
 from werkzeug.utils import redirect
 from flask_login import current_user, login_required
 from app.main import main
+from app.requests import get_random_quote
 from app.utils import format_blogs_array, format_comments_array
 
 
@@ -21,7 +22,8 @@ def index():
     from app.models import Blog
     blogs = Blog.query.all()
     formatted_blogs = format_blogs_array(blogs)
-    return render_template('index.html', username=username, user_id=user_id, blogs_list=formatted_blogs)
+    quote = get_random_quote()
+    return render_template('index.html', username=username, user_id=user_id, blogs_list=formatted_blogs, random_quote=quote)
 
 
 @main.route('/blogs/create')

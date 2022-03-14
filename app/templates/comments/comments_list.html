@@ -24,9 +24,11 @@
     <div class="block_container">
 
         {% if comments_list is defined and comments_list|length > 0 %}
+            <p><br></p>
             <div class="list">
                 {{ macro.show_pitches_comments(comments_list) }}
             </div>
+            <p><br></p>
         {% else %}
             <p class="informative_text">No comments for this blog, yet.<br>Give the creator some feedback by adding a comment</p>
         {% endif %}
