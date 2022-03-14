@@ -53,3 +53,36 @@ class User(db.Model, UserMixin):
     # The __repr__method is not really important. It makes it easier to debug our applications.
     def __repr__(self):
         return f'User {self.username}'
+
+
+class Comment(db.Model):
+    __tablename__ = "comments"
+
+    id = db.Column(db.Integer, primary_key=True)
+    comment_txt = db.Column(db.String)
+
+    creator_id = db.Column(db.Integer)
+    blog_id = db.Column(db.Integer)
+    timestamp = db.Column(db.String(255))
+
+    def __repr__(self):
+        return f'Comment {self.comment_txt}'
+
+
+class Blog(db.Model):
+    __tablename__ = "blogs"
+
+    id = db.Column(db.Integer, primary_key=True)
+    blog_txt = db.Column(db.String)
+    title = db.Column(db.String(255))
+    description = db.Column(db.String(300))
+
+    creator_id = db.Column(db.Integer)
+    timestamp = db.Column(db.String(255))
+    saves = db.Column(db.String)
+    comments = db.Column(db.String)
+
+    def __repr__(self):
+        return f'Blog {self.title}'
+
+

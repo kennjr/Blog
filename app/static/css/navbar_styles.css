@@ -192,12 +192,6 @@
     cursor: pointer;
 }
 
-.blog_item_opt_container:active{
-    cursor: pointer;
-    border-radius: 10px;
-    background:rgba(191, 191, 191, 0.5);
-}
-
 .blog_item_opt_container > p{
     margin-left: 0.5vw;
     font-weight: bold;

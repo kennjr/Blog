@@ -13,8 +13,10 @@
 {% if user %}
 <div class="container">
     <div class="loginHeader">
+        {% if logout %}
+            <img class="logout_img" src="/static/images/ic_logout.svg" alt="Logout of account" onclick="window.location.href='{{ url_for( 'auth.logout' ) }}';">
+        {% endif %}
         {% if user.profile_pic_path != 'no_path' %}
-            <p>A txt</p>
             <img class="avatar_img" src="{{user.profile_pic_path}}" alt="Avatar image">
         {% else %}
             <img class="avatar_img" src="/static/images/ic_account_circle.svg" alt="Avatar image">
@@ -22,7 +24,7 @@
         <p>{{user.username}}</p>
         <div class="user_profile_info">
             <p class="user_info_item">{{user.email}}</p>
-
+            <p class="user_info_item">{{timestamp}}</p>
         </div>
     </div>
     <div class="mainAboutSection">

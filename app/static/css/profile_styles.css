@@ -63,6 +63,14 @@
     font-weight: bold;
 }
 
+.logout_img{
+    align-self: flex-end;
+}
+
+.logout_img:hover{
+    cursor: pointer;
+}
+
 .avatar_img{
     width: 100px;
     height: 100px;
