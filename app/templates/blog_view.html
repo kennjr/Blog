@@ -10,13 +10,31 @@
           <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/blog_view_styles.css') }}"/>
         {% endblock stylesheet %}
 
-        {% if user %}
-            <div class="user_info_container">
-                <p>{{blog_id}}</p>
+        {% if blog %}
+            <div class="main_container">
+                <div class="navbar_container">
+                    <div class="comment_nav_left_opts">
+                        <img class="regular_img" src="/static/images/ic_back_arrow.svg" alt="Navigate to home" onclick="window.location.href='{{ url_for( 'main.index' ) }}';">
+                        <p id="comments_txt">{{blog.title}}</p>
+                    </div>
+                    <img class="hide_element" src="/static/images/ic_save.svg" alt="Bookmark this blog">
+                </div>
+                <div class="block_container">
+                    <div class="opts_container">
+                        <img class="blog_action_opt" src="/static/images/ic_comments.svg" alt="View comments" onclick="window.location.href='{{ url_for( 'main.view_blog_comments', blog_id=blog.id ) }}';">
+                        {% if show_more_opts %}
+                            <img class="blog_action_opt" src="/static/images/ic_edit.svg" alt="Edit blog" onclick="window.location.href='{{ url_for( 'main.view_blog_comments', blog_id=blog.id ) }}';">
+                            <img class="blog_action_opt" src="/static/images/ic_delete.svg" alt="Delete blog" onclick="window.location.href='{{ url_for( 'main.view_blog_comments', blog_id=blog.id ) }}';">
+                        {% endif %}
+                    </div>
+                    <div class="divider"></div>
+                    <p>{{blog.blog_txt}}</p>
+                </div>
             </div>
+
         {% else %}
             <div class="generic_container">
-                <p>You haven't logged in yet. <a href="{{ url_for('auth.login') }}">Login</a> <br> <a href="{{ url_for('auth.signup') }}">Sign Up</a> </p>
+                <p>Unfortunately the resource(blog) you've requested for couldn't be found.<a href="{{ url_for('main.index') }}">Navigate back</a></p>
             </div>
         {% endif %}
 
