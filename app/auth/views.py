@@ -1,4 +1,4 @@
-from flask import render_template, url_for, session
+from flask import render_template, url_for, session, flash
 from flask_login import login_required, logout_user, login_user
 from werkzeug.utils import redirect
 from app.auth import auth
@@ -13,7 +13,11 @@ def signup():
 
     if username is not None and email is not None and password is not None:
         from app.models import User
-        user = User(email=email, username=username, password=password, profile_pic_path="no_path")
+        from datetime import datetime
+
+        now = datetime.now()
+        user = User(email=email, username=username, password=password, profile_pic_path="no_path",
+                    timestamp=now.strftime("%m/%d/%Y, %H:%M:%S"), last_login="")
         from app import db
         db.session.add(user)
         db.session.commit()
@@ -30,11 +34,25 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user is not None and user.verify_password(password):
             login_user(user, True)
+            from app import db
+            from datetime import datetime
+            now = datetime.now()
 
-            session["username"] = user.username
+            user = User.query.filter_by(id=user.id).first()
+            setattr(user, 'last_login', now.strftime("%m/%d/%Y, %H:%M:%S"))
+            db.session.commit()
             return redirect(req.args.get('next') or url_for('main.index'))
         else:
             print("The login failed")
             redirect(url_for("auth.login"))
 
     return render_template('forms/login.html')
+
+
+@auth.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('You have been successfully logged out')
+    return redirect(url_for("main.index"))
+
