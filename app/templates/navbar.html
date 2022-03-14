@@ -16,7 +16,7 @@
                     <p>New Pitch</p>
                 </div>
                 {% if username %}
-                    <div class="login_btn" onclick="window.location.href='{{ url_for( 'main.index' ) }}';">
+                    <div class="login_btn" onclick="window.location.href='{{ url_for( 'main.view_profile', user_id=user_id ) }}';">
                         <p>{{username}}</p>
                     </div>
                 {% else %}
