@@ -1,11 +1,11 @@
 {% macro display_blogs(blogs_list) %}
 
     {% for blog in blogs_list %}
-        <div class="blog_item_container">
-            <p>{{blog.title}}</p>
-            <p>{{blog.description}}</p>
+        <div class="blog_item_container" onclick="window.location.href='{{ url_for( 'main.view_blog', blog_id=blog.id ) }}';">
+            <p class="blog_item_title_txt">{{blog.title}}</p>
+            <p class="blog_item_description_txt">{{blog.description}}</p>
             <div class="blog_item_info">
-                <p>Published : {{blog.timestamp}}</p>
+                <p class="blog_item_timestamp_txt">Published : {{blog.timestamp}}</p>
                 <div class="blog_item_opts">
                     <div class="blog_item_opt_container">
                         <img src="/static/images/ic_save.svg" alt="Add this blog to bookmarks">
