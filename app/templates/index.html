@@ -5,9 +5,11 @@
 
     <div class="block_container">
         <p><br></p>
+        <p class="random_quote_txt">{{random_quote.quote}} - {{random_quote.author}}</p>
         <div class="list">
             {{ macro.display_blogs(blogs_list) }}
         </div>
+        <p><br></p>
     </div>
 
 {% endblock %}
