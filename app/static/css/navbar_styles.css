@@ -196,3 +196,9 @@
     margin-left: 0.5vw;
     font-weight: bold;
 }
+
+.hide_element {
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+}

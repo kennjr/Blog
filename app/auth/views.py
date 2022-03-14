@@ -25,7 +25,7 @@ def signup():
     return render_template('forms/signup.html')
 
 
-@auth.route('/login', methods=["GET", "POST"])
+@auth.route('/login', methods=["GET"])
 def login():
     email = req.args.get("email_address")
     password = req.args.get("password")
