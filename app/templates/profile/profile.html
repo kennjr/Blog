@@ -6,20 +6,45 @@
 </head>
 <body>
 
-        {% block stylesheet %}
-          <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/profile_styles.css') }}"/>
-        {% endblock stylesheet %}
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profile_styles.css') }}"/>
+{% endblock stylesheet %}
 
-        {% if user %}
-            <div class="user_info_container">
-                <p>{{user.username}}</p>
-                <p>{{user.email}}</p>
-            </div>
+{% if user %}
+<div class="container">
+    <div class="loginHeader">
+        {% if user.profile_pic_path != 'no_path' %}
+            <p>A txt</p>
+            <img class="avatar_img" src="{{user.profile_pic_path}}" alt="Avatar image">
         {% else %}
-            <div class="generic_container">
-                <p>You haven't logged in yet. <a href="{{ url_for('auth.login') }}">Login</a> <br> <a href="{{ url_for('auth.signup') }}">Sign Up</a> </p>
-            </div>
+            <img class="avatar_img" src="/static/images/ic_account_circle.svg" alt="Avatar image">
         {% endif %}
+        <p>{{user.username}}</p>
+        <div class="user_profile_info">
+            <p class="user_info_item">{{user.email}}</p>
+
+        </div>
+    </div>
+    <div class="mainAboutSection">
+        <div class="info_list">
+            <div>
+                <p>{{user.username}}</p>
+                <p class="smallFont">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati ipsa placeat harum quibusdam officiis vitae.</p>
+                <p class="repo_lang smallFont">Published: 10/ 02/ 20 at 15:09</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+{% else %}
+<div class="generic_container">
+    <p>You haven't logged in yet. <a href="{{ url_for('auth.login') }}">Login</a> <br> <a
+            href="{{ url_for('auth.signup') }}">Sign Up</a></p>
+</div>
+{% endif %}
 
 </body>
 </html>

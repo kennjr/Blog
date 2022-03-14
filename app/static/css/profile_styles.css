@@ -1,4 +1,189 @@
+:root{
+    --primary-color: #dcdcdc;
+    --accent-color: #FF5722;
+    --basic-font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .generic_container{
     height: 100%;
     text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container {
+    width: 30%;
+    margin: 7% auto;
+    overflow: auto;
+    min-height: 50vh;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.loginFooter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    align-items: center;
+}
+
+.mainAboutSection{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+}
+
+.smallFont{
+    font-size: small;
+    padding-left: 5px;
+}
+
+.loginHeader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent-color);
+    font-size: 20px;
+    overflow: auto;
+    color: #fff;
+    padding: 30px;
+    font-weight: bold;
+}
+
+.avatar_img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user_info_item{
+    font-size: medium;
+    font-weight: 500;
+}
+
+.user_profile_info{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 1vh;
+}
+
+.followInfoContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.repo_lang{
+    margin: 1vh 0;
+    color: grey;
+}
+
+.followInfoContainer > img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.followInfoContainer > p{
+    text-align: center;
+    font-weight: 500;
+    margin-left: 15px;
+}
+
+.userListOpt:hover{
+    cursor: pointer;
+}
+
+/* This will style the results list */
+.info_list{
+    background-color: #fff;
+    /* The line below will get rid of the bullet points that we've got on the items */
+
+    margin: 0;
+    padding: 0;
+    max-height: 400px;
+    /* This will give us the automatic style for the site if the elements are more than the available space, providing a scrollbar only for the height */
+    overflow-y: auto;
+}
+
+.list{
+    list-style-type: none;
+    margin: 10px 0px;
+}
+
+/* The styling block below will style all the elements except for the last element of the same type */
+.list:not(:last-of-type){
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* Styling for the phone */
+@media only screen and (max-width: 640px) {
+    /* Here are some changes*/
+    .container {
+        width: 70%;
+        margin: 15% auto;
+        overflow: auto;
+        min-height: 50vh;
+        border: 1px solid #ddd;
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+        border-radius: 5px;
+    }
+    .infoText{
+        font-size: 13px;
+    }
+}
+
+/* Styling for the phone */
+@media only screen and (min-width: 641px) and (max-width: 880px) {
+    /* Here are some changes*/
+    .container {
+        width: 50%;
+        margin: 10% auto;
+        overflow: auto;
+        min-height: 50vh;
+        border: 1px solid #ddd;
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+        border-radius: 5px;
+    }
+    .infoText{
+        font-size: 15px;
+    }
+}
+
+/* Styling for the phone */
+@media only screen
+    and (min-width: 881px)
+    and (max-width: 1200px) {
+    /* Here are some changes*/
+    .container {
+        width: 40%;
+        margin: 7% auto;
+        overflow: auto;
+        min-height: 50vh;
+        border: 1px solid #ddd;
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+        border-radius: 5px;
+    }
+
+    .infoText{
+        font-size: 16px;
+    }
 }
