@@ -51,9 +51,12 @@ def new_blog():
 def view_blog(blog_id):
     from app.models import Blog
     blog = Blog.query.filter_by(id=blog_id).first()
-    if current_user.id == blog.creator_id:
-        show_more_opts = True
-    else:
+    try:
+        if current_user.id == blog.creator_id:
+            show_more_opts = True
+        else:
+            show_more_opts = False
+    except AttributeError:
         show_more_opts = False
     return render_template('blog_view.html', blog=blog, show_more_opts=show_more_opts)
 
@@ -61,22 +64,27 @@ def view_blog(blog_id):
 @main.route("/blogs/<int:blog_id>/comments", methods=["GET", "POST"])
 def view_blog_comments(blog_id):
     comment_txt = req.args.get("comment")
-    if comment_txt:
-        from app.models import Comment
-        if comment_txt is not None:
-            from datetime import datetime
+    if current_user is not None and comment_txt:
+        try:
+            if comment_txt is not None:
+                from app.models import Comment
+                from datetime import datetime
 
-            now = datetime.now()
-            comment = Comment(comment_txt=comment_txt, creator_id=current_user.id, blog_id=blog_id,
-                              timestamp=now.timestamp())
-            from app.models import Blog
+                now = datetime.now()
+                comment = Comment(comment_txt=comment_txt, creator_id=current_user.id, blog_id=blog_id,
+                                  timestamp=now.timestamp())
+                from app.models import Blog
 
-            from app import db
-            db.session.add(comment)
-            # pitch = Pitch.query().filter(Pitch.id == pitch_id).first()
-            blog = Blog.query.filter_by(id=blog_id).first()
-            setattr(blog, 'comments', Blog.comments + ",1")
-            db.session.commit()
+                from app import db
+                db.session.add(comment)
+                # pitch = Pitch.query().filter(Pitch.id == pitch_id).first()
+                blog = Blog.query.filter_by(id=blog_id).first()
+                setattr(blog, 'comments', Blog.comments + ",1")
+                db.session.commit()
+        except AttributeError:
+            print('An attr error occurred')
+
+
 
         # comments = Comment.query.filter_by(pitch_id=pitch_id)
         # comments_list = format_comments_array(comments)
@@ -84,20 +92,37 @@ def view_blog_comments(blog_id):
         # return render_template('comments/comments_list.html', title=f"Comments - {pitch_id}", comments_list=comments_list)
     else:
         from app.models import Comment
+        from app.models import Blog
+        blog = Blog.query.filter_by(id=blog_id).first()
+        show_delete = None
+        try:
+            if blog and blog.creator_id == current_user.id:
+                show_delete = True
+        except AttributeError:
+            print('An attr error occurred')
+
         comments = Comment.query.filter_by(blog_id=blog_id)
         comments_list = format_comments_array(comments)
-        return render_template('comments/comments_list.html', title=f"Comments - {blog_id}", comments_list=comments_list)
+        return render_template('comments/comments_list.html', title=f"Comments - {blog_id}", comments_list=comments_list, show_delete=show_delete)
 
 
 @main.route('/users/<int:user_id>', methods=["GET"])
 def view_profile(user_id):
     from app.models import User
     user = User.query.filter_by(id=user_id).first()
-    if current_user.id == user.id:
-        show_logout = True
-    else:
+    from app.models import Blog
+    blogs = Blog.query.filter_by(creator_id=user_id).all()
+    formatted_blogs = format_blogs_array(blogs)
+    try:
+        if current_user.id == user.id:
+            show_logout = True
+        else:
+            show_logout = False
+    except AttributeError:
         show_logout = False
-    return render_template('profile/profile.html', user=user, timestamp=user.timestamp, logout=show_logout)
+
+    return render_template('profile/profile.html', user=user, timestamp=user.timestamp, logout=show_logout,
+                           blogs=formatted_blogs)
 
 
 @main.route("/blogs/<blog_id>/delete")
@@ -111,4 +136,17 @@ def delete_blog(blog_id):
             db.session.delete(blog)
             db.session.commit()
     return redirect(url_for('main.index'))
+
+
+@main.route("/blogs/<blog_id>/comments/<comment_id>/delete")
+@login_required
+def delete_comment(blog_id, comment_id):
+    if blog_id:
+        from app.models import Comment
+        comment = Comment.query.filter_by(id=comment_id).first()
+        if comment and comment.blog_id == blog_id:
+            from app import db
+            db.session.delete(comment)
+            db.session.commit()
+    return redirect(url_for('main.view_blog_comments', blog_id=blog_id))
 

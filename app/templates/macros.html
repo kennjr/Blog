@@ -21,11 +21,25 @@
 
 {% endmacro %}
 
-{% macro show_pitches_comments(comments_list) %}
+{% macro show_pitches_comments(comments_list, show_delete) %}
     {% for comment in comments_list %}
         <div class="comment_item_container">
             <p class="comment_text_el">{{comment.comment_txt}}</p>
-            <p> - <a href="{{ url_for('main.view_profile', user_id=comment.creator_id) }}">{{comment.creator_id}}</a></p>
+            <div class="comment_more_opts_container">
+                <p> - <a href="{{ url_for('main.view_profile', user_id=comment.creator_id) }}">{{comment.creator_id}}</a></p>
+                {% if show_delete %}
+                    <img src="/static/images/ic_delete.svg" alt="Delete the comment" onclick="window.location.href='{{ url_for( 'main.delete_comment', blog_id=comment.blog_id, comment_id=comment.id ) }}';">
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% endmacro %}
+
+
+{% macro display_users_blogs(blogs_list) %}
+    {% for blog in blogs_list %}
+        <div class="profile_blog_element_container" onclick="window.location.href='{{ url_for( 'main.view_blog', blog_id=blog.id ) }}';">
+            <p class="blog_title_el" >{{blog.title}}</p>
         </div>
     {% endfor %}
 {% endmacro %}

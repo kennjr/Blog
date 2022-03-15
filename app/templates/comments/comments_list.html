@@ -26,7 +26,7 @@
         {% if comments_list is defined and comments_list|length > 0 %}
             <p><br></p>
             <div class="list">
-                {{ macro.show_pitches_comments(comments_list) }}
+                {{ macro.show_pitches_comments(comments_list, show_delete) }}
             </div>
             <p><br></p>
         {% else %}

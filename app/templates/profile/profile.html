@@ -9,6 +9,7 @@
 {% block stylesheet %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profile_styles.css') }}"/>
 {% endblock stylesheet %}
+{% import 'macros.html' as macro %}
 
 {% if user %}
 <div class="container">
@@ -28,12 +29,9 @@
         </div>
     </div>
     <div class="mainAboutSection">
+        <p class="informative_text">Blogs</p>
         <div class="info_list">
-            <div>
-                <p>{{user.username}}</p>
-                <p class="smallFont">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati ipsa placeat harum quibusdam officiis vitae.</p>
-                <p class="repo_lang smallFont">Published: 10/ 02/ 20 at 15:09</p>
-            </div>
+            {{ macro.display_users_blogs(blogs) }}
         </div>
 
     </div>

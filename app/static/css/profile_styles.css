@@ -71,6 +71,22 @@
     cursor: pointer;
 }
 
+.blog_title_el{
+    width: 40ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: default;
+}
+
+.profile_blog_element_container{
+    padding: 1vh 2vw;
+}
+
+.informative_text{
+    text-align: center;
+}
+
 .avatar_img{
     width: 100px;
     height: 100px;
