@@ -85,4 +85,16 @@ class Blog(db.Model):
     def __repr__(self):
         return f'Blog {self.title}'
 
+    def add_blog(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_blog(cls, user_id):
+        blog = Blog.query.filter_by(creator_id=user_id).first()
+        return blog
+
+    def get_all_blogs(self):
+        blogs = Blog.query.all()
+        return blogs
 

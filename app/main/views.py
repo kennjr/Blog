@@ -105,7 +105,7 @@ def view_profile(user_id):
 def delete_blog(blog_id):
     if blog_id:
         from app.models import Blog
-        blog = Blog.query.get(id=blog_id).first()
+        blog = Blog.query.filter_by(id=blog_id).first()
         if blog and blog.creator_id == current_user.id:
             from app import db
             db.session.delete(blog)

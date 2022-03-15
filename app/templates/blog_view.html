@@ -24,7 +24,7 @@
                         <img class="blog_action_opt" src="/static/images/ic_comments.svg" alt="View comments" onclick="window.location.href='{{ url_for( 'main.view_blog_comments', blog_id=blog.id ) }}';">
                         {% if show_more_opts %}
                             <img class="blog_action_opt" src="/static/images/ic_edit.svg" alt="Edit blog" onclick="window.location.href='{{ url_for( 'main.view_blog_comments', blog_id=blog.id ) }}';">
-                            <img class="blog_action_opt" src="/static/images/ic_delete.svg" alt="Delete blog" onclick="window.location.href='{{ url_for( 'main.view_blog_comments', blog_id=blog.id ) }}';">
+                            <img class="blog_action_opt" src="/static/images/ic_delete.svg" alt="Delete blog" onclick="window.location.href='{{ url_for( 'main.delete_blog', blog_id=blog.id ) }}';">
                         {% endif %}
                     </div>
                     <div class="divider"></div>
