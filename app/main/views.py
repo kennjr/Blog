@@ -99,3 +99,16 @@ def view_profile(user_id):
         show_logout = False
     return render_template('profile/profile.html', user=user, timestamp=user.timestamp, logout=show_logout)
 
+
+@main.route("/blogs/<blog_id>/delete")
+@login_required
+def delete_blog(blog_id):
+    if blog_id:
+        from app.models import Blog
+        blog = Blog.query.get(id=blog_id).first()
+        if blog and blog.creator_id == current_user.id:
+            from app import db
+            db.session.delete(blog)
+            db.session.commit()
+    return redirect(url_for('main.index'))
+
