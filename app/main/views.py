@@ -64,23 +64,24 @@ def view_blog(blog_id):
 @main.route("/blogs/<int:blog_id>/comments", methods=["GET", "POST"])
 def view_blog_comments(blog_id):
     comment_txt = req.args.get("comment")
-    if current_user is not None and comment_txt:
+    if comment_txt:
         try:
-            if comment_txt is not None:
-                from app.models import Comment
-                from datetime import datetime
+            if current_user is not None:
+                if comment_txt is not None:
+                    from app.models import Comment
+                    from datetime import datetime
 
-                now = datetime.now()
-                comment = Comment(comment_txt=comment_txt, creator_id=current_user.id, blog_id=blog_id,
-                                  timestamp=now.timestamp())
-                from app.models import Blog
+                    now = datetime.now()
+                    comment = Comment(comment_txt=comment_txt, creator_id=current_user.id, blog_id=blog_id,
+                                      timestamp=now.timestamp())
+                    from app.models import Blog
 
-                from app import db
-                db.session.add(comment)
-                # pitch = Pitch.query().filter(Pitch.id == pitch_id).first()
-                blog = Blog.query.filter_by(id=blog_id).first()
-                setattr(blog, 'comments', Blog.comments + ",1")
-                db.session.commit()
+                    from app import db
+                    db.session.add(comment)
+                    # pitch = Pitch.query().filter(Pitch.id == pitch_id).first()
+                    blog = Blog.query.filter_by(id=blog_id).first()
+                    setattr(blog, 'comments', Blog.comments + ",1")
+                    db.session.commit()
         except AttributeError:
             print('An attr error occurred')
 

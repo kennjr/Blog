@@ -1,3 +1,4 @@
+import sqlalchemy.exc
 from flask import render_template, url_for, session, flash
 from flask_login import login_required, logout_user, login_user
 from werkzeug.utils import redirect
@@ -11,17 +12,23 @@ def signup():
     email = req.args.get("email_address")
     password = req.args.get("password")
 
-    if username is not None and email is not None and password is not None:
-        from app.models import User
-        from datetime import datetime
+    try:
+        if username is not None and email is not None and password is not None:
+            from app.models import User
+            from datetime import datetime
 
-        now = datetime.now()
-        user = User(email=email, username=username, password=password, profile_pic_path="no_path",
-                    timestamp=now.strftime("%m/%d/%Y, %H:%M:%S"), last_login="")
-        from app import db
-        db.session.add(user)
-        db.session.commit()
+            now = datetime.now()
+            user = User(email=email, username=username, password=password, profile_pic_path="no_path",
+                        timestamp=now.strftime("%m/%d/%Y, %H:%M:%S"), last_login="")
+            from app import db
+            db.session.add(user)
+            db.session.commit()
+            from app.email import mail_message
+            mail_message("Welcome to Blog", "email/welcome_user", user.email, user=user)
+            return redirect(url_for('auth.login'))
+    except sqlalchemy.exc.IntegrityError and RuntimeError:
         return redirect(url_for('auth.login'))
+
     return render_template('forms/signup.html')
 
 

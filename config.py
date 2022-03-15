@@ -1,3 +1,6 @@
+import os
+
+
 class Config:
     """
     The general configs parent class
@@ -7,6 +10,18 @@ class Config:
     SECRET_KEY = "GY78JNnU1809m"
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:NewPA55w0rd123)(*@localhost/blogsdb'
+    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    # export
+    MAIL_USERNAME = 'bloggg.appp@gmail.com'
+    # export
+    MAIL_PASSWORD = 'P132eo12'
+    # MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
+    # MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+    SUBJECT_PREFIX = 'blog'
+    SENDER_EMAIL = 'bloggg.appp@gmail.com'
+
 
 class ProdConfig(Config):
     """
