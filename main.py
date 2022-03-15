@@ -7,7 +7,7 @@ from app.models import User
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
-app = create_app("production")
+app = create_app("development")
 
 manager = Manager(app)
 migrate = Migrate(app, db)
@@ -20,7 +20,7 @@ def make_shell_ctx():
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    # app.run()
-    manager.run()
+    app.run()
+    # manager.run()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
